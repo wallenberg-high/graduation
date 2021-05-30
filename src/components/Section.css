@@ -1,0 +1,23 @@
+.Section {
+	margin-top: 4em;
+}
+
+.Section:first-of-type {
+	margin-top: 0;
+}
+
+/*
+.Section table {
+	width: 100%;
+}
+
+.Section td {
+	vertical-align: top;
+	margin: 0;
+	padding: .5em 0;
+}
+
+.Section td:first-of-type {
+	width: 60%;
+}
+*/
