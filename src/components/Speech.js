@@ -11,7 +11,9 @@ export default function Speech({
 		<table className={styles.Speech}>
 			<tbody>
 				<tr>
-					<td>{title}</td>
+					<td>
+						<h2>{title}</h2>
+					</td>
 					<td>
 						<ul>
 							{presenterList}
@@ -21,14 +23,4 @@ export default function Speech({
 			</tbody>
 		</table>
 	);
-//	return (
-//		<tr className={styles.Speech}>
-//			<td>{title}</td>
-//			<td>
-//				<ul>
-//					{presenterList}
-//				</ul>
-//			</td>
-//		</tr>
-//	);
 }

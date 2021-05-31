@@ -1,3 +1,4 @@
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 
@@ -6,10 +7,6 @@ module.exports = {
 	devtool: "eval-source-map",
 	module: {
 		rules: [
-//				{
-//					test: /\.css$/,
-//					use: ["style-loader", "css-loader"]
-//				},
 			{
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
@@ -47,9 +44,11 @@ module.exports = {
 //	},
 	plugins: [
 //		new CleanWebpackPlugin(),
-//		new CopyWebpackPlugin([
-//			{ from: "./src/css/", to: "css" }
-//		]),
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: "./src/img/", to: "img" }
+			]
+		}),
 		new HtmlWebpackPlugin({
 			template: "./src/index.html",
 			filename: "index.html"

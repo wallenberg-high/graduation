@@ -2,25 +2,21 @@ import styles from "./Section.css";
 import Speech from "./Speech";
 import Note from "./Note";
 import List from "./List";
+import Image from "./Image";
 
 
 const Types = {
 	speech: Speech,
 	note: Note,
-	list: List
-};
-const Containers = {
-	table: ({children}) => <table><tbody>{children}</tbody></table>,
-	div: ({children}) => <div>{children}</div>
+	list: List,
+	image: Image
 };
 
 
 export default function Section({
 	title,
-	layout = "div",
 	children})
 {
-	const Container = Containers[layout];
 	const childComponents = children.map((props, i) => {
 		const Component = Types[props.type];
 
@@ -29,10 +25,10 @@ export default function Section({
 
 	return (
 		<section className={styles.Section}>
-			<h1>{title}</h1>
-			<Container>
+			{title && <h1>{title}</h1>}
+			<div>
 				{childComponents}
-			</Container>
+			</div>
 		</section>
 	);
 }

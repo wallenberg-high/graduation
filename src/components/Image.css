@@ -1,0 +1,9 @@
+.Image {
+	width: 100%;
+	text-align: center;
+	margin: 2em auto;
+}
+
+.Image img {
+	width: 60%;
+}
