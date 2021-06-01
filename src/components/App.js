@@ -3,13 +3,13 @@ import Section from "./Section";
 
 
 export default function App({
-	sections})
+	contents})
 {
-	const sectionComponents = sections.map((props, i) => <Section key={i} {...props} />);
+	const sections = contents.map((props, i) => <Section key={i} {...props} />);
 
 	return (
 		<div className={styles.App}>
-			{sectionComponents}
+			{sections}
 		</div>
 	);
 }
