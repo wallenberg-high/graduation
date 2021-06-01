@@ -1,11 +1,25 @@
 .Section {
-	margin-top: 8em;
+	margin-top: 4em;
+}
+
+.Section::before {
+	content: '✽ ✽ ✽';
+	font-size: 2em;
+	color: #aaa;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 1.5em;
+	display: inline-block;
 }
 
 .Section:first-of-type {
 	margin-top: 0;
 }
 
+.Section:first-of-type::before {
+	display: none;
+}
+
 .Section:first-of-type h1 {
-	font-size: 400%;
+	font-size: 2.25em;
 }

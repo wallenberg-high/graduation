@@ -11,17 +11,4 @@ export default function Image({
 			/>
 		</div>
 	);
-//	return (
-//		<div className={styles.Image}
-//			style={{
-//				backgroundImage: `url("${url}")`
-//			}}
-//		/>
-//	);
-//	return (
-//		<img className={styles.Image}
-//			src={url}
-//			alt={url}
-//		/>
-//	);
 }
