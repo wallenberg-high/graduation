@@ -1,3 +1,4 @@
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
@@ -32,26 +33,27 @@ module.exports = {
 			}
 		]
 	},
-//	resolve: {
-//		extensions: ["*", ".js", ".jsx"]
-//	},
-//	output: {
-//		path: __dirname + "/dist",
-//		filename: "bundle.js"
-//	},
-//	devServer: {
-//		contentBase: "./dist"
-//	},
+	output: {
+		path: __dirname + "/dist"
+	},
 	plugins: [
-//		new CleanWebpackPlugin(),
-		new CopyWebpackPlugin({
-			patterns: [
-				{ from: "./assets/img/", to: "img" }
-			]
-		}),
+		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: "./src/index.html",
 			filename: "index.html"
+		}),
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: "./assets/img/", to: "img" },
+				{ from: "./assets/favicon/*", to: "[name][ext]" },
+				{ from: "dist", to: "../docs", globOptions: {
+					ignore: [
+						"**/*.html",
+						"**/*.js",
+						"**/*.txt"
+					]
+				} }
+			]
 		})
 	]
 };
