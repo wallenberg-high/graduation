@@ -46,12 +46,13 @@ module.exports = {
 			patterns: [
 				{ from: "./assets/img/", to: "img" },
 				{ from: "./assets/favicon/*", to: "[name][ext]" },
-				{ from: "dist", to: "../docs", globOptions: {
-					ignore: [
-						"**/*.html",
-						"**/*.js",
-						"**/*.txt"
-					]
+				{ from: "dist", to: "../docs",
+					noErrorOnMissing: true,
+					globOptions: {
+						ignore: [
+							"**/*.html",
+							"**/*.txt"
+						]
 				} }
 			]
 		})
