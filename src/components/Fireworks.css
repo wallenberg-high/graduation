@@ -10,7 +10,7 @@
 	justify-content: center;
 	display: flex;
 	box-sizing: border-box;
-	position: absolute;
+	position: relative;
 }
 
 .Fireworks h1 {

@@ -36,12 +36,13 @@ const FireworksSettings = {
 const FireworksPadding = 50;
 
 
-export default function Fireworks(
-	props)
+export default function Fireworks()
 {
+	const [enabled, setEnabled] = useState(false);
+	const [fireworks, setFireworks] = useState(null);
 	const containerRef = useCallback(el => {
 		if (el && !fireworks) {
-			fireworks = new FW({
+			setFireworks(new FW({
 				...FireworksSettings,
 				target: el,
 				boundaries: {
@@ -50,29 +51,30 @@ export default function Fireworks(
 					right: el.clientWidth - FireworksPadding,
 					bottom: el.clientHeight - FireworksPadding
 				}
-			});
-			fireworks.start();
+			}));
 		}
+	}, []);
+	const handleScroll = throttle(250, () => {
+		setEnabled(Math.abs(document.body.offsetHeight - window.pageYOffset)
+			<= 2 * window.innerHeight);
 	});
-	let fireworks;
 
+	useEffect(() => {
+		const handler = window.addEventListener("scroll", handleScroll);
 
-//	const handleScroll = throttle(250, () => {
-//		if (Math.abs(window.innerHeight + window.pageYOffset -
-//				document.body.offsetHeight) < 50) {
-//		} else {
-//		}
-//	});
-//
-//
-//	useEffect(() => {
-//		const handler = window.addEventListener("scroll", handleScroll);
-//
-//		return () => window.removeEventListener(handler);
-//	}, []);
+		return () => window.removeEventListener(handler);
+	}, []);
+
+	if (fireworks) {
+		if (enabled && !fireworks.isRunning) {
+			fireworks.start();
+		} else if (!enabled && fireworks.isRunning) {
+			fireworks.pause();
+		}
+	}
 
 	return (
-		<div
+		<section
 			className={styles.Fireworks}
 		>
 			<div
@@ -81,6 +83,6 @@ export default function Fireworks(
 			/>
 			<h1>Congratulations to the Class of 2021!</h1>
 			<img src="img/bulldog.png" alt="bulldog" />
-		</div>
+		</section>
 	);
 }

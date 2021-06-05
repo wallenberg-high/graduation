@@ -34,7 +34,7 @@ module.exports = {
 		]
 	},
 	output: {
-		path: __dirname + "/dist"
+		path: __dirname + "dist"
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
